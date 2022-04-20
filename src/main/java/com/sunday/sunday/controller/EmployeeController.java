@@ -52,7 +52,6 @@ public class EmployeeController {
 		}
 	});
 	
-	System.out.println(map1);
 	return new ResponseEntity<>(map1, HttpStatus.OK);
 	}
 	
