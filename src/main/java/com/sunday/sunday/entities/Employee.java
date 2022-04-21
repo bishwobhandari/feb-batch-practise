@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //for default constructor
 @AllArgsConstructor //for all argument constructor
 @Entity
-@Table(name="ems_employee")
+@Table(name="employee")
 public class Employee {
 	
 	
@@ -46,7 +46,7 @@ public class Employee {
 	@Column(name="birth_date")
 	private LocalDate birthDate;
 	
-	@Column(name="phone_number")
+	@Column(name="phone")
 	private String phoneNumber;
 	
 	private BigInteger salary;  //int is primitive
