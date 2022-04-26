@@ -32,12 +32,13 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long Id;
+	@Column(name="e_id")
+	private Long e_id;
 	
 	
 	@Column(name="first_name")
 	private String firstName;
-	
+
 	@Column(name="last_name")
 	private String lastName;
 	
@@ -50,6 +51,8 @@ public class Employee {
 	private String phoneNumber;
 	
 	private BigInteger salary;  //int is primitive
+	
+	
 	
 	//OnetoOne, OneToMany, ManyToTone ManyToMany
 	
@@ -67,6 +70,11 @@ public class Employee {
 	
 	@Transient //ignore this age property during persistance 
 	private int age;
+	
+	@ManyToOne
+	@JoinColumn(name="tax_rate_id")
+	@JsonIgnoreProperties("employeeList")
+	private TaxRate taxRate;
 	
 	
 	
