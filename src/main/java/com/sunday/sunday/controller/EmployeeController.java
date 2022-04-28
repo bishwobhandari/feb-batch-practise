@@ -70,5 +70,11 @@ public class EmployeeController {
 		return empService.getStateTaxByID(id);
 	}
 	
+	//design a api to get list of firstName of employees  which has age greater than 30
+	@GetMapping(value = "get-firstName-older-than-30")
+	public Map<String,Integer> getFirstNameOlderThan30(){
+		return empService.getFirstNameOlderThan30();
+	}
+	
 	
 }

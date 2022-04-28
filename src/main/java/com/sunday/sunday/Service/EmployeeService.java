@@ -1,6 +1,8 @@
 package com.sunday.sunday.Service;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +118,29 @@ public class EmployeeService implements AppConstant {
 		System.out.println("Salary after deduction of Sales Tax : " + deductedSalarySTax);
 
 		return deductedSalarySTax;
+	}
+
+	public Map<String,Integer> getFirstNameOlderThan30() {
+		List<Employee> employee = empRepo.findAll();
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		employee.stream().forEach(x -> {
+			LocalDate birthDate = x.getBirthDate();
+			System.out.println(birthDate);
+			LocalDate todayDate = LocalDate.now();
+			System.out.println(todayDate);
+			Period p = Period.between(birthDate, todayDate);
+			System.out.println(p.getYears());
+			x.setAge(p.getYears());
+		});
+		
+		employee.stream().forEach(x->{
+			if(x.getAge()>=30) {
+			map.put( x.getFirstName(),x.getAge());
+			}
+		});
+		
+
+		return map;
 	}
 
 }
